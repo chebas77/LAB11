@@ -21,6 +21,8 @@ public interface SpecialtyRepository
     // Fetch specialties by office
     List<Specialty> findByOffice(String office);
 
+    // Delete specialty by id
+    void deleteById(Integer id);
 
     @Override
     List<Specialty> findAll();

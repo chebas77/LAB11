@@ -66,5 +66,26 @@ public class SpecialtyServiceTest {
 		assertEquals(H_OPEN, specialtyCreated.getH_open());
 		assertEquals(H_CLOSE, specialtyCreated.getH_close());
 	}
+	@Test
+	public void testDelete() {
+
+		Integer ID_TO_DELETE = 7;
+
+		// Eliminar la especialidad por ID
+		try {
+			this.specialtyService.delete(ID_TO_DELETE);
+		} catch (SpecialtyNotFound e) {
+			fail(e.getMessage());
+		}
+
+		// Verificar que ya no existe
+		try {
+			this.specialtyService.findById(ID_TO_DELETE);
+			fail("Specialty should have been deleted");
+		} catch (SpecialtyNotFound e) {
+			// Se espera esta excepción
+			assertTrue(true);
+		}
+	}
 
 }

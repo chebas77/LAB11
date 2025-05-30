@@ -16,6 +16,7 @@ import com.tecsup.petclinic.entities.Pet;
 @Repository
 public interface PetRepository 
 	extends JpaRepository<Pet, Integer> {
+		
 
 	// Fetch pets by name
 	List<Pet> findByName(String name);

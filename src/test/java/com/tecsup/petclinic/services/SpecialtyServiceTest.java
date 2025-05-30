@@ -48,5 +48,23 @@ public class SpecialtyServiceTest {
 
 		assertEquals(SIZE_EXPECTED, specialties.size());
 	}
+	@Test
+	public void testCreate() {
+
+		String NAME = "cardiology";
+		String OFFICE = "Lima";
+		int H_OPEN = 8;
+		int H_CLOSE = 17;
+
+		Specialty specialty = new Specialty(NAME, OFFICE, H_OPEN, H_CLOSE);
+
+		Specialty specialtyCreated = this.specialtyService.create(specialty);
+
+		assertNotNull(specialtyCreated.getId());
+		assertEquals(NAME, specialtyCreated.getName());
+		assertEquals(OFFICE, specialtyCreated.getOffice());
+		assertEquals(H_OPEN, specialtyCreated.getH_open());
+		assertEquals(H_CLOSE, specialtyCreated.getH_close());
+	}
 
 }

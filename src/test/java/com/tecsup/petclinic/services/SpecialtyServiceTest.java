@@ -69,7 +69,7 @@ public class SpecialtyServiceTest {
 	@Test
 	public void testDelete() {
 
-		Integer ID_TO_DELETE = 7;
+		Integer ID_TO_DELETE = 10;
 
 		// Eliminar la especialidad por ID
 		try {

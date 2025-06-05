@@ -1,11 +1,15 @@
 package com.tecsup.petclinic.util;
 
 import com.tecsup.petclinic.dtos.PetDTO;
+import com.tecsup.petclinic.dtos.SpecialtyDTO;
 import com.tecsup.petclinic.entities.Pet;
+import com.tecsup.petclinic.entities.Specialty;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TObjectCreator {
+
+	// ================= PET METHODS (EXISTING) =================
 
 	public static Pet getPet() {
 		return new Pet(1,"Leo",1,1, null);
@@ -40,6 +44,7 @@ public class TObjectCreator {
 		pet.setId(2000);
 		return pet;
 	}
+
 	public static List<PetDTO> getAllPetTOs() {
 		List<PetDTO> petTOs  = new ArrayList<PetDTO>();
 		petTOs.add(new PetDTO(1,"Leo",1,1, "2000-09-07"));
@@ -49,7 +54,6 @@ public class TObjectCreator {
 		petTOs.add(new PetDTO(5,"Iggy",3,4, "2000-11-30"));
 		return petTOs;
 	}
-
 
 	public static List<Pet> getPetsForFindByName() {
 		List<Pet> pets  = new ArrayList<Pet>();
@@ -81,5 +85,78 @@ public class TObjectCreator {
 
 	public static PetDTO newPetTOForDelete() {
 		return new PetDTO(10000,"Beethoven3",1,1, "2020-05-20");
+	}
+
+	// ================= SPECIALTY METHODS (NEW) =================
+
+	public static Specialty getSpecialty() {
+		return new Specialty(1, "radiology", "Farewell", 8, 18);
+	}
+
+	public static Specialty newSpecialty() {
+		return new Specialty(0, "Dermatology", "Room 205", 9, 16);
+	}
+
+	public static Specialty newSpecialtyCreated() {
+		Specialty specialty = newSpecialty();
+		specialty.setId(1000);
+		return specialty;
+	}
+
+	public static Specialty newSpecialtyForUpdate() {
+		return new Specialty(0, "Neurology", "Room 401", 8, 18);
+	}
+
+	public static Specialty newSpecialtyCreatedForUpdate() {
+		Specialty specialty = newSpecialtyForUpdate();
+		specialty.setId(4000);
+		return specialty;
+	}
+
+	public static Specialty newSpecialtyForDelete() {
+		return new Specialty(0, "Radiology", "Room 301", 7, 15);
+	}
+
+	public static Specialty newSpecialtyCreatedForDelete() {
+		Specialty specialty = newSpecialtyForDelete();
+		specialty.setId(2000);
+		return specialty;
+	}
+
+	public static List<SpecialtyDTO> getAllSpecialtyTOs() {
+		List<SpecialtyDTO> specialtyTOs = new ArrayList<SpecialtyDTO>();
+		specialtyTOs.add(new SpecialtyDTO(1, "radiology", "Farewell", 8, 18));
+		specialtyTOs.add(new SpecialtyDTO(2, "surgery", "Maryland", 8, 12));
+		specialtyTOs.add(new SpecialtyDTO(3, "dentistry", "Terranova", 9, 19));
+		specialtyTOs.add(new SpecialtyDTO(9, "cardiology", "Lima", 8, 17));
+		specialtyTOs.add(new SpecialtyDTO(11, "cardiology", "Lima", 8, 17));
+		specialtyTOs.add(new SpecialtyDTO(12, "cardiology", "Lima", 8, 17));
+		return specialtyTOs;
+	}
+
+	public static List<Specialty> getSpecialtiesForFindByName() {
+		List<Specialty> specialties = new ArrayList<Specialty>();
+		specialties.add(new Specialty(1, "radiology", "Farewell", 8, 18));
+		return specialties;
+	}
+
+	public static List<Specialty> getSpecialtiesForFindByOffice() {
+		List<Specialty> specialties = new ArrayList<Specialty>();
+		specialties.add(new Specialty(9, "cardiology", "Lima", 8, 17));
+		specialties.add(new Specialty(11, "cardiology", "Lima", 8, 17));
+		specialties.add(new Specialty(12, "cardiology", "Lima", 8, 17));
+		return specialties;
+	}
+
+	public static SpecialtyDTO getSpecialtyTO() {
+		return new SpecialtyDTO(1, "radiology", "Farewell", 8, 18);
+	}
+
+	public static SpecialtyDTO newSpecialtyTO() {
+		return new SpecialtyDTO(-1, "Dermatology", "Room 205", 9, 16);
+	}
+
+	public static SpecialtyDTO newSpecialtyTOForDelete() {
+		return new SpecialtyDTO(10000, "Radiology", "Room 301", 7, 15);
 	}
 }

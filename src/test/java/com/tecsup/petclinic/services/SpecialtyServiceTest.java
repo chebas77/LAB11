@@ -3,15 +3,13 @@ package com.tecsup.petclinic.services;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.tecsup.petclinic.entities.Specialty;
-import com.tecsup.petclinic.exception.SpecialtyNotFound;
-import org.junit.jupiter.api.BeforeEach;
+import com.tecsup.petclinic.exception.SpecialtyNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
-import java.util.Optional;
 
 @SpringBootTest
 @Slf4j
@@ -33,7 +31,7 @@ public class SpecialtyServiceTest {
 
 		try {
 			specialty = this.specialtyService.findById(ID);
-		} catch (SpecialtyNotFound e) {
+		} catch (SpecialtyNotFoundException e) {
 			fail(e.getMessage());
 		}
 		assertEquals(NAME_EXPECTED, specialty.getName());
@@ -74,7 +72,7 @@ public class SpecialtyServiceTest {
 		// Eliminar la especialidad por ID
 		try {
 			this.specialtyService.delete(ID_TO_DELETE);
-		} catch (SpecialtyNotFound e) {
+		} catch (SpecialtyNotFoundException e) {
 			fail(e.getMessage());
 		}
 
@@ -82,7 +80,7 @@ public class SpecialtyServiceTest {
 		try {
 			this.specialtyService.findById(ID_TO_DELETE);
 			fail("Specialty should have been deleted");
-		} catch (SpecialtyNotFound e) {
+		} catch (SpecialtyNotFoundException e) {
 			// Se espera esta excepción
 			assertTrue(true);
 		}

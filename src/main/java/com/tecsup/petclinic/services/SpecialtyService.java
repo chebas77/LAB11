@@ -1,6 +1,6 @@
 package com.tecsup.petclinic.services;
 import java.util.List;
-import com.tecsup.petclinic.exception.SpecialtyNotFound;
+import com.tecsup.petclinic.exception.SpecialtyNotFoundException;
 import com.tecsup.petclinic.entities.Specialty;
 
 public interface SpecialtyService {
@@ -20,15 +20,15 @@ public interface SpecialtyService {
     /**
      *
      * @param id
-     * @throws SpecialtyNotFound
+     * @throws SpecialtyNotFoundException
      */
-    void delete(Integer id) throws SpecialtyNotFound;
+    void delete(Integer id) throws SpecialtyNotFoundException;
     /**
      *
      * @param id
      * @return
      */
-    Specialty findById(Integer id) throws SpecialtyNotFound;
+    Specialty findById(Integer id) throws SpecialtyNotFoundException;
     /**
      *
      * @param name

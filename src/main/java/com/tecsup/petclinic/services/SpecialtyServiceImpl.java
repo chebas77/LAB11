@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import com.tecsup.petclinic.entities.Specialty;
-import com.tecsup.petclinic.exception.SpecialtyNotFound;
+import com.tecsup.petclinic.exception.SpecialtyNotFoundException;
 
 
 @Service
@@ -42,10 +42,10 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     /**
      *
      * @param id
-     * @throws SpecialtyNotFound
+     * @throws SpecialtyNotFoundException
      */
     @Override
-    public void delete(Integer id) throws SpecialtyNotFound {
+    public void delete(Integer id) throws SpecialtyNotFoundException {
         Specialty specialty = findById(id);
         specialtyRepository.delete(specialty);
     }
@@ -55,13 +55,13 @@ public class SpecialtyServiceImpl implements SpecialtyService {
      * @return
      */
     @Override
-    public Specialty findById(Integer id) throws SpecialtyNotFound {
+    public Specialty findById(Integer id) throws SpecialtyNotFoundException {
 
         Optional<Specialty> specialty = specialtyRepository.findById(id);
 
         if (!specialty.isPresent()) {
             log.error("Specialty with id {} not found", id);
-            throw new SpecialtyNotFound("Specialty with id " + id + " not found");
+            throw new SpecialtyNotFoundException("Specialty with id " + id + " not found");
         }
         return specialty.get();
     }
